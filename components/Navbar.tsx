@@ -1,14 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Accueil", href: "#hero" },
-  { label: "À propos", href: "#about" },
-  { label: "Expériences", href: "#experience" },
-  { label: "Formation", href: "#education" },
-  { label: "Compétences", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "À propos", href: "#about", hover: "hover:bg-flame" },
+  { label: "Expériences", href: "#experience", hover: "hover:bg-soleil" },
+  { label: "Formation", href: "#education", hover: "hover:bg-mauve" },
+  { label: "Compétences", href: "#skills", hover: "hover:bg-acide" },
 ];
 
 export default function Navbar() {
@@ -16,81 +14,77 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav className="fixed top-4 left-4 right-4 z-50 animate-fade-in-down">
-      <div
-        className={`rounded-2xl transition-all duration-500 ${
-          scrolled
-            ? "bg-[#0a0a0f]/90 backdrop-blur-xl border border-[#1e1e2e] shadow-lg shadow-black/30"
-            : "bg-[#0a0a0f]/40 backdrop-blur-md border border-white/5"
-        }`}
-      >
-        <div className="px-5 py-3.5 flex items-center justify-between">
-          <a href="#hero" className="text-lg font-bold gradient-text">
-            YD
-          </a>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled ? "border-b-2 border-encre bg-creme/95 backdrop-blur" : "border-b-2 border-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-6">
+        <a
+          href="#top"
+          className="text-base font-black tracking-[-0.03em] uppercase"
+        >
+          Youssef Drif
+        </a>
 
-          {/* Desktop */}
-          <ul className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:block">
+          <ul className="flex items-center gap-2">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  className={`rounded-full border-2 border-transparent px-3.5 py-1.5 text-sm font-bold transition-colors hover:border-encre ${l.hover}`}
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+            <li className="ml-2">
+              <a
+                href="#contact"
+                className="rounded-full border-2 border-encre bg-encre px-5 py-2 text-sm font-bold text-creme shadow-[3px_3px_0_0_var(--flame)] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0_0_var(--flame)]"
+              >
+                Me contacter
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <button
+          type="button"
+          className="eyebrow rounded-full border-2 border-encre px-4 py-2 md:hidden"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          aria-controls="menu-mobile"
+        >
+          {menuOpen ? "Fermer" : "Menu"}
+        </button>
+      </div>
+
+      {menuOpen && (
+        <nav id="menu-mobile" className="border-t-2 border-encre bg-creme md:hidden">
+          <ul className="mx-auto max-w-6xl px-5 py-2 sm:px-6">
+            {[...links, { label: "Contact", href: "#contact", hover: "" }].map((l) => (
+              <li key={l.href} className="border-b-2 border-dotted border-encre/25 last:border-0">
+                <a
+                  href={l.href}
+                  className="block py-3.5 font-bold"
+                  onClick={() => setMenuOpen(false)}
                 >
                   {l.label}
                 </a>
               </li>
             ))}
           </ul>
-
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors duration-200"
-          >
-            Me contacter
-          </a>
-
-          {/* Mobile burger */}
-          <button
-            className="md:hidden text-gray-400 hover:text-white"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
-          >
-            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth={2}>
-              {menuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden border-t border-white/5 px-5 py-4">
-            <ul className="flex flex-col gap-4">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="text-gray-300 hover:text-white transition-colors"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </nav>
+        </nav>
+      )}
+    </header>
   );
 }

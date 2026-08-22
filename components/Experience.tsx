@@ -1,110 +1,129 @@
+import Band, { SectionHead } from "./Section";
 import RevealOnScroll from "./RevealOnScroll";
+import Tile, { Sticker, type Fill } from "./Tile";
 
-const experiences = [
+const experiences: {
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  header: Fill;
+  chip: string;
+  tilt: string;
+  tasks: string[];
+  stack: string[];
+}[] = [
   {
-    title: "Développeur Full Stack & Chef de projet",
+    title: "Développeur full stack & chef de projet",
     company: "Beinstore",
     location: "Les Sables d'Olonne",
     period: "2023 — 2025",
-    description:
-      "Développement d'applications mobiles hybrides et gestion de projet end-to-end dans un environnement professionnel exigeant.",
+    header: "flame",
+    chip: "bg-flame-pale",
+    tilt: "md:-rotate-1",
     tasks: [
-      "Développement d'applications mobiles en Ionic Capacitor (Angular)",
-      "Responsable de la coordination, planification et suivi des projets (délais, budgets, qualité)",
+      "Applications mobiles hybrides en Ionic Capacitor et Angular",
+      "Coordination, planification et suivi des projets : délais, budgets, qualité",
       "Mise en place d'outils et de processus de cybersécurité",
       "Livraisons pour le CESER et Réseau Entreprendre",
     ],
-    tags: ["Ionic Capacitor", "Angular", "TypeScript", "Cybersécurité", "Gestion de projet"],
+    stack: ["Ionic Capacitor", "Angular", "TypeScript", "Cybersécurité", "Gestion de projet"],
   },
   {
-    title: "Développeur Frontend",
+    title: "Développeur frontend",
     company: "DIS Transics",
     location: "Alès",
     period: "2021 — 2022",
-    description:
-      "Développement d'interfaces utilisateur modernes pour des applications web dans le secteur du transport.",
+    header: "azur",
+    chip: "bg-azur-pale",
+    tilt: "md:rotate-1",
     tasks: [
-      "Développement d'applications web en ReactJS",
-      "Développement de tests unitaires avec Jest",
-      "Collaboration en équipe sur des projets en production",
+      "Applications web en ReactJS pour le secteur du transport",
+      "Écriture des tests unitaires avec Jest",
+      "Travail en équipe sur des projets en production",
     ],
-    tags: ["ReactJS", "JavaScript", "Jest", "Tests unitaires"],
+    stack: ["ReactJS", "JavaScript", "Jest"],
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6 bg-[#0d0d15]">
-      <div className="max-w-6xl mx-auto">
-        <RevealOnScroll>
-          <div className="flex items-center gap-3 mb-12">
-            <span className="w-8 h-px bg-indigo-500" />
-            <span className="text-indigo-400 text-sm font-medium uppercase tracking-widest">
-              Expériences
-            </span>
-          </div>
-        </RevealOnScroll>
+    <Band id="experience" bg="bg-creme">
+      <SectionHead
+        index="02"
+        label="Expériences"
+        sticker="azur"
+        title={
+          <>
+            Deux boîtes,{" "}
+            <span className="pop lowercase">quatre ans</span> de terrain
+          </>
+        }
+      />
 
-        <RevealOnScroll delay={100}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">
-            Parcours <span className="gradient-text">professionnel</span>
-          </h2>
-        </RevealOnScroll>
+      <div className="space-y-10 md:space-y-14">
+        {experiences.map((exp, i) => (
+          <RevealOnScroll key={exp.company} delay={i * 100}>
+            <Tile
+              fill="blanc"
+              className={`overflow-hidden shadow-[8px_8px_0_0_var(--encre)] transition-transform duration-300 hover:rotate-0 ${exp.tilt}`}
+            >
+              {/* Bandeau de couleur */}
+              <div
+                className={`flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-b-2 border-encre px-6 py-3.5 md:px-9 ${
+                  exp.header === "flame" ? "bg-flame text-encre" : "bg-azur text-white"
+                }`}
+              >
+                <span className="eyebrow text-sm">{exp.period}</span>
+                <span className="eyebrow">{exp.location}</span>
+              </div>
 
-        <div className="relative">
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-violet-500/30 to-transparent hidden md:block" />
-
-          <div className="space-y-12">
-            {experiences.map((exp, i) => (
-              <RevealOnScroll key={i} variant="fadeLeft" delay={i * 150}>
-                <div className="md:pl-24 relative">
-                  <div className="hidden md:flex absolute left-5 top-6 w-6 h-6 rounded-full bg-[#0d0d15] border-2 border-indigo-500 items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                  </div>
-
-                  <div className="bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-8 card-hover">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-1">{exp.title}</h3>
-                        <div className="flex items-center gap-2 text-gray-400 text-sm">
-                          <span className="font-medium text-indigo-400">{exp.company}</span>
-                          <span>·</span>
-                          <span>{exp.location}</span>
-                        </div>
-                      </div>
-                      <span className="text-xs font-mono bg-[#1e1e2e] text-gray-400 px-3 py-1.5 rounded-lg">
-                        {exp.period}
-                      </span>
-                    </div>
-
-                    <p className="text-gray-400 text-sm mb-5 leading-relaxed">{exp.description}</p>
-
-                    <ul className="space-y-2 mb-6">
-                      {exp.tasks.map((task, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-gray-400">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0" />
-                          {task}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+              <div className="p-6 md:p-9">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <span className="text-[3.5rem] leading-none font-black tracking-[-0.05em] opacity-15">
+                    0{i + 1}
+                  </span>
+                  <div>
+                    <h3 className="max-w-xl text-2xl leading-tight font-black tracking-[-0.03em] md:text-3xl">
+                      {exp.title}
+                    </h3>
+                    <p className="mt-2">
+                      <Sticker fill={exp.header === "flame" ? "soleil" : "acide"}>
+                        {exp.company}
+                      </Sticker>
+                    </p>
                   </div>
                 </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
+
+                <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+                  {exp.tasks.map((task) => (
+                    <li key={task} className="flex gap-3 leading-relaxed">
+                      <span
+                        aria-hidden
+                        className={`mt-2 h-2.5 w-2.5 shrink-0 rounded-full border-2 border-encre ${
+                          exp.header === "flame" ? "bg-flame" : "bg-azur"
+                        }`}
+                      />
+                      <span>{task}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <ul className="mt-7 flex flex-wrap gap-2">
+                  {exp.stack.map((tech) => (
+                    <li
+                      key={tech}
+                      className={`rounded-full border-2 border-encre px-3.5 py-1 text-xs font-bold ${exp.chip}`}
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Tile>
+          </RevealOnScroll>
+        ))}
       </div>
-    </section>
+    </Band>
   );
 }
