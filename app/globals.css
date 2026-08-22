@@ -88,6 +88,37 @@ body::before {
   border: 2px solid var(--encre);
 }
 
+/* ---- Curseurs pixel maison, vermillon (32 px, ~1,7x le curseur système) ----
+   Trois déclarations par règle : la dernière comprise par le navigateur gagne,
+   image-set sert la version 4x sur écran retina pour garder les pixels nets. */
+body {
+  cursor: url("/cursors/arrow.png") 2 2, auto;
+  cursor: -webkit-image-set(url("/cursors/arrow.png") 1x, url("/cursors/arrow-2x.png") 2x) 2 2, auto;
+  cursor: image-set(url("/cursors/arrow.png") 1x, url("/cursors/arrow-2x.png") 2x) 2 2, auto;
+}
+
+a,
+button,
+summary,
+label,
+[role="button"] {
+  cursor: url("/cursors/hand.png") 11 2, pointer;
+  cursor: -webkit-image-set(url("/cursors/hand.png") 1x, url("/cursors/hand-2x.png") 2x) 11 2, pointer;
+  cursor: image-set(url("/cursors/hand.png") 1x, url("/cursors/hand-2x.png") 2x) 11 2, pointer;
+}
+
+/* Pas de curseur à masquer sur écran tactile : on rend la main au système */
+@media (hover: none) {
+  body,
+  a,
+  button,
+  summary,
+  label,
+  [role="button"] {
+    cursor: auto;
+  }
+}
+
 /* Étiquette en petites capitales */
 .eyebrow {
   font-size: 0.6875rem;
