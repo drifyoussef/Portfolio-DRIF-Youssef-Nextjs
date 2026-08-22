@@ -1,4 +1,5 @@
 import Image from "next/image";
+import portrait from "@/public/portrait.png";
 import Marquee from "./Marquee";
 import Tile, { Sticker } from "./Tile";
 
@@ -83,7 +84,7 @@ export default function Hero() {
               <Tile fill="azur" className="rotate-3 p-2.5 shadow-[8px_8px_0_0_var(--encre)]">
                 <div className="relative aspect-4/5 overflow-hidden rounded-xl border-2 border-encre">
                   <Image
-                    src="/portrait.png"
+                    src={portrait}
                     alt="Portrait de Youssef Drif"
                     fill
                     sizes="(min-width: 1024px) 20rem, 80vw"
