@@ -1,25 +1,48 @@
 import Band, { SectionHead } from "./Section";
 import RevealOnScroll from "./RevealOnScroll";
-import Tile, { Sticker, type Fill } from "./Tile";
+import Tile, { Sticker, fills, type Fill } from "./Tile";
 
 const experiences: {
   title: string;
   company: string;
   location: string;
   period: string;
-  header: Fill;
-  chip: string;
+  current?: boolean;
+  accent: Fill; // bandeau, puces
+  chip: string; // fond des étiquettes de stack
+  sticker: Fill; // pastille du nom d'entreprise
+  dot: string;
   tilt: string;
   tasks: string[];
   stack: string[];
 }[] = [
   {
+    title: "Développeur full stack",
+    company: "YD Development",
+    location: "Les Sables-d'Olonne · Remote",
+    period: "2025 — 2026",
+    current: true,
+    accent: "mauve",
+    chip: "bg-mauve-pale",
+    sticker: "acide",
+    dot: "bg-mauve",
+    tilt: "md:rotate-1",
+    tasks: [
+      "Création d'applications web et mobiles en React, Next.js, Node.js et Ionic",
+      "Projets menés en freelance, du cadrage à la mise en production",
+      "Applications pensées pour être performantes et scalables",
+    ],
+    stack: ["React", "Next.js", "Node.js", "Ionic", "Freelance"],
+  },
+  {
     title: "Développeur full stack & chef de projet",
     company: "Beinstore",
-    location: "Les Sables d'Olonne",
+    location: "Les Sables-d'Olonne",
     period: "2023 — 2025",
-    header: "flame",
+    accent: "flame",
     chip: "bg-flame-pale",
+    sticker: "soleil",
+    dot: "bg-flame",
     tilt: "md:-rotate-1",
     tasks: [
       "Applications mobiles hybrides en Ionic Capacitor et Angular",
@@ -34,8 +57,10 @@ const experiences: {
     company: "DIS Transics",
     location: "Alès",
     period: "2021 — 2022",
-    header: "azur",
+    accent: "azur",
     chip: "bg-azur-pale",
+    sticker: "acide",
+    dot: "bg-azur",
     tilt: "md:rotate-1",
     tasks: [
       "Applications web en ReactJS pour le secteur du transport",
@@ -55,7 +80,7 @@ export default function Experience() {
         sticker="azur"
         title={
           <>
-            Deux boîtes,{" "}
+            Trois boîtes,{" "}
             <span className="pop lowercase">quatre ans</span> de terrain
           </>
         }
@@ -71,10 +96,18 @@ export default function Experience() {
               {/* Bandeau de couleur */}
               <div
                 className={`flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-b-2 border-encre px-6 py-3.5 md:px-9 ${
-                  exp.header === "flame" ? "bg-flame text-encre" : "bg-azur text-white"
+                  fills[exp.accent]
                 }`}
               >
-                <span className="eyebrow text-sm">{exp.period}</span>
+                <span className="eyebrow flex items-center gap-2.5 text-sm">
+                  {exp.current && (
+                    <span className="relative flex h-2 w-2">
+                      <span className="dot-ping absolute inline-flex h-full w-full rounded-full bg-encre" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-encre" />
+                    </span>
+                  )}
+                  {exp.period}
+                </span>
                 <span className="eyebrow">{exp.location}</span>
               </div>
 
@@ -88,9 +121,7 @@ export default function Experience() {
                       {exp.title}
                     </h3>
                     <p className="mt-2">
-                      <Sticker fill={exp.header === "flame" ? "soleil" : "acide"}>
-                        {exp.company}
-                      </Sticker>
+                      <Sticker fill={exp.sticker}>{exp.company}</Sticker>
                     </p>
                   </div>
                 </div>
@@ -100,9 +131,7 @@ export default function Experience() {
                     <li key={task} className="flex gap-3 leading-relaxed">
                       <span
                         aria-hidden
-                        className={`mt-2 h-2.5 w-2.5 shrink-0 rounded-full border-2 border-encre ${
-                          exp.header === "flame" ? "bg-flame" : "bg-azur"
-                        }`}
+                        className={`mt-2 h-2.5 w-2.5 shrink-0 rounded-full border-2 border-encre ${exp.dot}`}
                       />
                       <span>{task}</span>
                     </li>

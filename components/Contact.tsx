@@ -36,8 +36,8 @@ export default function Contact() {
             Contact
           </Sticker>
           <h2 className="mt-6 max-w-4xl text-[clamp(2.25rem,6.5vw,4.25rem)] leading-[0.9] font-black tracking-[-0.04em] uppercase">
-            On se{" "}
-            <span className="pop lowercase text-acide">parle</span> ?
+            On créer un projet{" "}
+            <span className="pop lowercase text-acide">ensemble</span> ?
           </h2>
         </RevealOnScroll>
 

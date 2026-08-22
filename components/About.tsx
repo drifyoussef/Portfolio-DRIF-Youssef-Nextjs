@@ -3,9 +3,10 @@ import RevealOnScroll from "./RevealOnScroll";
 import Tile from "./Tile";
 
 const paragraphs = [
-  "Développeur full stack basé aux Sables d'Olonne, j'ai développé des applications mobiles en Ionic/Capacitor et Angular, livrées notamment pour le CESER et Réseau Entreprendre.",
+  "Développeur full stack basé aux Sables-d'Olonne, j'ai développé des applications mobiles en Ionic/Capacitor et Angular, livrées notamment pour le CESER et Réseau Entreprendre.",
   "J'ai ensuite pris la gestion de projet de bout en bout : planification, suivi des délais et du budget, jusqu'à la livraison, avec des exigences de qualité et de sécurité élevées.",
-  "Aujourd'hui en formation Expert en système d'information et sécurité, j'associe la pratique du développement à une vision plus large de l'architecture et du risque.",
+  "Depuis fin 2025, je développe en freelance sous YD Development : applications web et mobiles en React, Next.js, Node.js et Ionic, du cadrage à la mise en production.",
+  "En parallèle, ma formation Expert en système d'information et sécurité associe la pratique du développement à une vision plus large de l'architecture et du risque.",
 ];
 
 export default function About() {
@@ -62,14 +63,14 @@ export default function About() {
 
         {[
           { value: "4", unit: "ans", label: "d'expérience", fill: "flame" as const },
-          { value: "2", unit: "", label: "entreprises", fill: "acide" as const },
+          { value: "3", unit: "", label: "expériences", fill: "acide" as const },
           { value: "20", unit: "+", label: "technologies", fill: "soleil" as const },
         ].map((s, i) => (
           <RevealOnScroll key={s.label} delay={200 + i * 70} className="md:col-span-2">
             <Tile fill={s.fill} className="flex h-full items-baseline gap-3 p-7">
               <span className="text-5xl leading-none font-black tracking-[-0.05em]">
                 {s.value}
-                {s.unit && <span className="ml-1 text-2xl">{s.unit}</span>}
+                {s.unit && <span className="ml-2 text-2xl">{s.unit}</span>}
               </span>
               <span className="font-bold">{s.label}</span>
             </Tile>

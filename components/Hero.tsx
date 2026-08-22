@@ -83,12 +83,12 @@ export default function Hero() {
               <Tile fill="azur" className="rotate-3 p-2.5 shadow-[8px_8px_0_0_var(--encre)]">
                 <div className="relative aspect-4/5 overflow-hidden rounded-xl border-2 border-encre">
                   <Image
-                    src="/portrait.jpg"
+                    src="/portrait.png"
                     alt="Portrait de Youssef Drif"
                     fill
                     sizes="(min-width: 1024px) 20rem, 80vw"
                     priority
-                    className="object-cover object-[50%_18%]"
+                    className="object-cover object-[50%_32px]"
                   />
                 </div>
               </Tile>
@@ -98,14 +98,14 @@ export default function Hero() {
                 className="absolute -top-5 -left-6 -rotate-6 px-4 py-2.5 sm:-left-10"
               >
                 <span className="text-2xl font-black">4</span>
-                <span className="eyebrow ml-1.5">ans d&apos;XP</span>
+                <span className="eyebrow ml-1.5">ans d&apos;experience</span>
               </Tile>
 
               <Tile
                 fill="blanc"
                 className="absolute -right-3 -bottom-6 rotate-3 px-4 py-2.5 sm:-right-6"
               >
-                <span className="eyebrow">Les Sables d&apos;Olonne</span>
+                <span className="eyebrow">Les Sables-d&apos;Olonne</span>
               </Tile>
             </div>
           </div>
