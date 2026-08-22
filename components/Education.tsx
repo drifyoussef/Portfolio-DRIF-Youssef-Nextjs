@@ -68,7 +68,7 @@ export default function Education() {
   return (
     <Band id="education" bg="bg-white">
       <SectionHead
-        index="03"
+        index="04"
         label="Formation"
         sticker="mauve"
         title={

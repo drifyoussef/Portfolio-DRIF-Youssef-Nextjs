@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const links = [
   { label: "À propos", href: "#about", hover: "hover:bg-flame" },
+  { label: "Projets", href: "#projects", hover: "hover:bg-azur hover:text-white" },
   { label: "Expériences", href: "#experience", hover: "hover:bg-soleil" },
   { label: "Formation", href: "#education", hover: "hover:bg-mauve" },
   { label: "Compétences", href: "#skills", hover: "hover:bg-acide" },
@@ -34,7 +35,7 @@ export default function Navbar() {
           Youssef Drif
         </a>
 
-        <nav className="hidden md:block">
+        <nav className="hidden lg:block">
           <ul className="flex items-center gap-2">
             {links.map((l) => (
               <li key={l.href}>
@@ -59,7 +60,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="eyebrow rounded-full border-2 border-encre px-4 py-2 md:hidden"
+          className="eyebrow rounded-full border-2 border-encre px-4 py-2 lg:hidden"
           onClick={() => setMenuOpen((v) => !v)}
           aria-expanded={menuOpen}
           aria-controls="menu-mobile"
@@ -69,7 +70,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <nav id="menu-mobile" className="border-t-2 border-encre bg-creme md:hidden">
+        <nav id="menu-mobile" className="border-t-2 border-encre bg-creme lg:hidden">
           <ul className="mx-auto max-w-6xl px-5 py-2 sm:px-6">
             {[...links, { label: "Contact", href: "#contact", hover: "" }].map((l) => (
               <li key={l.href} className="border-b-2 border-dotted border-encre/25 last:border-0">

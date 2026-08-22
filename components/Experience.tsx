@@ -75,7 +75,7 @@ export default function Experience() {
   return (
     <Band id="experience" bg="bg-creme">
       <SectionHead
-        index="02"
+        index="03"
         label="Expériences"
         sticker="azur"
         title={

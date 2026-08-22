@@ -35,7 +35,7 @@ export default function Skills() {
   return (
     <Band id="skills" bg="bg-acide-pale">
       <SectionHead
-        index="04"
+        index="05"
         label="Compétences"
         sticker="soleil"
         title={
