@@ -32,7 +32,7 @@ export default function Contact() {
       <div className="relative mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-28">
         <RevealOnScroll>
           <Sticker fill="acide" className="rotate-2">
-            <span className="opacity-60">06</span>
+            <span className="opacity-100">06</span>
             Contact
           </Sticker>
           <h2 className="mt-6 max-w-4xl text-[clamp(2.25rem,6.5vw,4.25rem)] leading-[0.9] font-black tracking-[-0.04em] uppercase">

@@ -42,7 +42,7 @@ export function SectionHead({
     <RevealOnScroll>
       <header className="mb-12 md:mb-16">
         <Sticker fill={sticker} className={tilt}>
-          <span className="opacity-60">{index}</span>
+          <span className="opacity-100">{index}</span>
           {label}
         </Sticker>
         <h2 className="mt-6 max-w-4xl text-[clamp(2.25rem,6.5vw,4.25rem)] leading-[0.9] font-black tracking-[-0.04em] uppercase">
