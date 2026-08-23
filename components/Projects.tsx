@@ -70,7 +70,7 @@ export default function Projects() {
       <SectionHead
         index="02"
         label="Projets"
-        sticker="flame"
+        sticker="soleil"
         title={
           <>
             Ce que je <span className="pop lowercase">construis</span>

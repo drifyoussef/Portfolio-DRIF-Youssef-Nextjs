@@ -15,7 +15,7 @@ export default function About() {
       <SectionHead
         index="01"
         label="À propos"
-        sticker="flame"
+        sticker="acide"
         title={
           <>
             Je code, je cadre,{" "}
