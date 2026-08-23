@@ -52,6 +52,7 @@ export default function Hero() {
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
+                id="hero-cta"
                 className="rounded-full border-2 border-encre bg-flame px-7 py-3.5 font-bold shadow-[4px_4px_0_0_var(--encre)] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_var(--encre)]"
               >
                 Me contacter
